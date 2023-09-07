@@ -1,0 +1,125 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true,
+    "es2020": true
+  },
+  "globals": {
+    "jsdom": true,
+    "jsSDK": true
+  },
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": ["react", "babel"],
+  "extends": ["eslint:recommended", "plugin:react/recommended", "prettier"],
+  "settings": {
+    "react": {
+      "version": "16.14"
+    }
+  },
+  "rules": {
+    // Possible Errors
+    "no-misleading-character-class": "error",
+    "no-template-curly-in-string": "error",
+    "no-console": "warn",
+    // Best practices
+    "array-callback-return": "error",
+    "consistent-return": "error",
+    "default-case": "error",
+    "eqeqeq": "error",
+    "no-eq-null": "error",
+    "no-param-reassign": "error",
+    "no-return-assign": "error",
+    "no-return-await": "error",
+    "babel/no-unused-expressions": "error",
+    "require-await": "error",
+    "radix": "error",
+    // Variables
+    "no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ],
+    "no-shadow-restricted-names": "error",
+    // Stylistic issues
+    "no-nested-ternary": "error",
+    "spaced-comment": [
+      "error",
+      "always",
+      {
+        "exceptions": ["-"]
+      }
+    ],
+    // ECMAScript 6
+    "arrow-body-style": ["error", "as-needed"],
+    "no-duplicate-imports": "error",
+    "no-var": "error",
+    "prefer-const": [
+      "error",
+      {
+        "destructuring": "all"
+      }
+    ],
+    "prefer-template": "error",
+    "template-curly-spacing": "off",
+    // React
+    "react/prop-types": "off",
+    "react/no-unescaped-entities": "off",
+    "no-import-assign": "warn"
+  },
+  "overrides": [
+    {
+      // https://typescript-eslint.io/docs/linting/troubleshooting/#i-get-errors-from-the-no-undef-rule-about-global-variables-not-being-defined-even-though-there-are-no-typescript-errors
+      "files": ["*.ts", "*.mts", "*.cts", "*.tsx"],
+      "rules": {
+        "no-undef": "off"
+      }
+    },
+    {
+      "files": ["src/**/*.ts", "src/**/*.tsx"],
+      "excludedFiles": [
+        "src/components/ui/**/*.ts",
+        "src/components/ui/**/*.tsx"
+      ],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "ecmaFeatures": {
+          "jsx": true,
+          "modules": true
+        },
+        "sourceType": "module",
+        "project": "./tsconfig.json",
+        "createDefaultProgram": true
+      },
+      "plugins": ["@typescript-eslint", "react", "babel"],
+      "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+      ],
+      "rules": {
+        "@typescript-eslint/no-floating-promises": "warn",
+        "@typescript-eslint/no-unsafe-assignment": "warn",
+        "@typescript-eslint/no-unsafe-member-access": "warn",
+        "@typescript-eslint/no-unsafe-call": "warn",
+        "@typescript-eslint/no-misused-promises": "warn",
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          {
+            "argsIgnorePattern": "^_",
+            "varsIgnorePattern": "^_"
+          }
+        ]
+      }
+    }
+  ]
+}
